@@ -1,17 +1,18 @@
 theme = "Coder"
 baseURL = "https://github.com/vert0x9/my-site"
-languageCode = "en-us"
+locale = "en-us"
 title = "Max Savenko"
 
 [params]
   avatarURL = "images/avatar.jpg"
   darkColorScheme = true
 
-[params.social]
+[[params.social]]
   name = "GitHub"
   icon = "fa-brands fa-github"
   url = "https://github.com/vert0x9"
   weight = 1
+
 [[menu.main]]
   name = "Posts"
   url = "/posts/"
