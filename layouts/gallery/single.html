@@ -1,0 +1,13 @@
+{{ define "title" }}
+  {{ .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+<div class="gallery-content">
+  {{ partial "title.html" . }}
+  {{ partial "gallery.html" . }}
+  {{ partial "related.html" . }}
+  {{ with .Content }}
+    <section class="prose">{{ . }}</section>
+  {{ end }}
+</div>
+{{ end }}

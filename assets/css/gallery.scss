@@ -1,0 +1,309 @@
+// Gallery color variables - scoped to gallery content, Coder-compatible
+.gallery-content {
+  --surface-1: #fafafa;
+  --surface-2: #e5e5e5;
+  --text-1: #0a0a0a;
+  --text-2: #737373;
+  --text-1-dark: #fafafa;
+  --border: #bbb;
+}
+
+body.colorscheme-dark .gallery-content {
+  --surface-1: #212121;
+  --surface-2: #404040;
+  --text-1: #dadada;
+  --text-2: #a3a3a3;
+  --border: #606060;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto .gallery-content {
+    --surface-1: #212121;
+    --surface-2: #404040;
+    --text-1: #dadada;
+    --text-2: #a3a3a3;
+    --border: #606060;
+  }
+}
+
+.gallery-content {
+
+  // Normalize for gallery content
+  h1, h2, h3, h4, h5, h6, figure, p, ul, menu {
+    margin: 0;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+  }
+  ul, menu {
+    padding: 0;
+    list-style: none;
+  }
+  img, svg, video {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // hgroup - title + description block
+  hgroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    max-width: 1024px;
+    text-align: center;
+
+    h1 {
+      font-weight: 600;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+    p {
+      color: var(--text-2);
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+
+    @media (min-width: 640px) {
+      width: 83.3333%;
+      margin-bottom: 4rem;
+    }
+  }
+
+  // Album cards grid
+  section.galleries {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3rem;
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // Individual album card
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+
+    & > figure {
+      aspect-ratio: 3/2;
+      width: 100%;
+      border-radius: 1rem;
+    }
+    & figure > img {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      border-radius: 1rem;
+      aspect-ratio: 3/2;
+      width: 100%;
+      overflow: hidden;
+      object-fit: cover;
+
+      &:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      }
+    }
+    & > div {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+
+      & > h2 {
+        font-weight: 600;
+        font-size: 1.125rem;
+        line-height: 1.375;
+      }
+      & > p {
+        color: var(--text-2);
+        font-size: 0.875rem;
+        line-height: 1.4286;
+      }
+    }
+  }
+
+  // Justified gallery container
+  section.gallery {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .gallery-item {
+    cursor: zoom-in;
+  }
+
+  // Markdown prose content
+  .prose {
+    max-width: 768px;
+    margin: 0 auto;
+    color: var(--text-1);
+    font-size: 1rem;
+    line-height: 1.75;
+
+    a {
+      color: var(--text-1);
+      font-weight: 500;
+      text-decoration: underline;
+    }
+    p {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+    img {
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+    h3 {
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+      font-weight: 600;
+      font-size: 1.25em;
+      line-height: 1.6;
+    }
+    ul {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+      padding-left: 1.625em;
+      list-style-type: disc;
+    }
+    ul > li {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      padding-left: 0.375em;
+    }
+    ul li::marker {
+      color: var(--text-2);
+    }
+    h3 + * { margin-top: 0; }
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+  }
+
+  // Featured albums
+  section.featured {
+    padding: 0 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .featured-card {
+    display: flex;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    overflow: hidden;
+
+    @media (min-width: 640px) {
+      aspect-ratio: 16/9;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1rem;
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, transparent 50%);
+      padding: 1.5rem;
+      width: 100%;
+      height: 100%;
+
+      & > h2 {
+        color: #fafafa;
+        font-weight: 600;
+        font-size: clamp(1.5rem, 2vw, 1.875rem);
+        line-height: 1.2;
+      }
+      & > p {
+        color: #d4d4d4;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+      }
+    }
+    &:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Categories nav
+  nav.categories {
+    padding: 0 1.5rem;
+    margin: 0 auto 3rem;
+
+    & > ul {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    li > a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      line-height: 1.4286;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media (min-width: 640px) {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        line-height: 1.25;
+      }
+    }
+  }
+
+  // Social icons section
+  section.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  // Utility
+  .hidden {
+    display: none;
+  }
+}
+
+// Lazy loading (can be global)
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+img.lazyload:not([src]) {
+  visibility: hidden;
+}

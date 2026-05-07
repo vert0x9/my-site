@@ -1,0 +1,16 @@
+{{ range $key, $value := .Site.Taxonomies.categories }}
+  {{ $gallery := partial "get-gallery.html" .Page }}
+  {{ if $gallery }}
+    <nav class="categories">
+      <ul>
+        {{ range $key, $value := .Site.Taxonomies.categories }}
+          {{ $gallery := partial "get-gallery.html" .Page }}
+          {{ if $gallery }}
+            <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+    {{ break }}
+  {{ end }}
+{{ end }}

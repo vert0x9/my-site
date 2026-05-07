@@ -3,9 +3,34 @@ baseURL = "https://github.com/vert0x9/my-site"
 locale = "en-us"
 title = "Max Savenko"
 
+[module]
+  [[module.imports]]
+    path = "github.com/nicokaiser/hugo-theme-gallery/v4"
+    [[module.imports.mounts]]
+      source = "assets"
+      target = "assets"
+    [[module.imports.mounts]]
+      source = "i18n"
+      target = "i18n"
+    [[module.imports.mounts]]
+      source = "static"
+      target = "static"
+
+[imaging]
+  quality = 75
+  resampleFilter = "CatmullRom"
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = true
+    includeFields = "ImageDescription|Orientation"
+
 [params]
   avatarURL = "images/avatar.jpg"
   darkColorScheme = true
+  [params.gallery]
+    # boxSpacing = 10
+    # targetRowHeight = 288
+    # targetRowHeightTolerance = 0.25
 
 [[params.social]]
   name = "GitHub"
@@ -19,6 +44,11 @@ title = "Max Savenko"
   weight = 1
 
 [[menu.main]]
+  name = "Gallery"
+  url = "/gallery/"
+  weight = 2
+
+[[menu.main]]
   name = "About"
   url = "/about/"
-  weight = 2
+  weight = 3

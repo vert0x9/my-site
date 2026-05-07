@@ -1,0 +1,25 @@
+{{ if or (eq .Section "gallery") (in .RelPermalink "/gallery") }}
+  {{ $galleryCSS := resources.Get "css/gallery.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $galleryCSS.RelPermalink }}" media="screen">
+
+  {{ $pswpCSS := resources.Get "css/photoswipe/photoswipe.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $pswpCSS.RelPermalink }}" media="screen">
+
+  {{ $pswpCapCSS := resources.Get "css/photoswipe/photoswipe-dynamic-caption-plugin.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $pswpCapCSS.RelPermalink }}" media="screen">
+
+  {{ $params := dict
+    "closeTitle" (i18n "closeTitle")
+    "zoomTitle" (i18n "zoomTitle")
+    "arrowPrevTitle" (i18n "arrowPrevTitle")
+    "arrowNextTitle" (i18n "arrowNextTitle")
+    "errorMsg" (i18n "errorMsg")
+    "downloadTitle" (i18n "downloadTitle")
+    "boxSpacing" (default 8 .Site.Params.gallery.boxSpacing)
+    "targetRowHeight" (default 288 .Site.Params.gallery.targetRowHeight)
+    "targetRowHeightTolerance" (default 0.25 .Site.Params.gallery.targetRowHeightTolerance)
+    "enableDownload" (default true .Params.build.publishResources)
+  }}
+  {{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true "params" $params) | resources.Fingerprint }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
