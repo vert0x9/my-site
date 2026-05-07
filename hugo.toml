@@ -8,8 +8,10 @@ title = "Max Savenko"
   darkColorScheme = true
 
 [params.social]
- instagram = "http://instagram/mandrivko"
-
+  name = "GitHub"
+  icon = "fa-brands fa-github"
+  url = "https://github.com/vert0x9"
+  weight = 1
 [[menu.main]]
   name = "Posts"
   url = "/posts/"
