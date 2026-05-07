@@ -28,9 +28,7 @@ title = "Max Savenko"
   avatarURL = "images/avatar.jpg"
   darkColorScheme = true
   [params.gallery]
-    # boxSpacing = 10
-    # targetRowHeight = 288
-    # targetRowHeightTolerance = 0.25
+    targetRowHeight = 400
 
 [[params.social]]
   name = "GitHub"
